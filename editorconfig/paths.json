@@ -1,0 +1,9 @@
+[
+  {
+    "files": ".editorconfig",
+    "paths": [
+      "~/.atom"
+      "/data/projects"
+    ]
+  }
+]

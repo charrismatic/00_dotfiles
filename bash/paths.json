@@ -1,0 +1,15 @@
+[
+  {
+    "files": [
+      ".bashrc",
+      ".bash_aliases",
+      ".bash_colors",
+      ".bash_functions",
+      ".bash_profile",
+      ".profile"
+    ],
+    "paths": [
+      "~/"
+    ]
+  }
+]
