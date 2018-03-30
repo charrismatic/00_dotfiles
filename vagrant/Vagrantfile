@@ -21,9 +21,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.post_up_message = "SUCCESS"
 
     config.vm.provider "virtualbox" do |vb|
+      #vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
       vb.gui = false
       vb.memory = "1024"
-      vb.cores = 2
+      vb.cpus = 2
     end
 
     config.vm.box = VAGRANT_BOX

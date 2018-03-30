@@ -33,7 +33,7 @@ Example paths.json
 - linters and formatters
     csscomb
     eslint
-    jsbeautify
+    js-beautify
     jshint
     php-cs-fixer
     sass-lint
