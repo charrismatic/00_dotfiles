@@ -1,4 +1,15 @@
 
+### FIND IN FROM 
+#  FIND A PATTERN IN FILES FOUND FROM DATE 
+function find_in_from () {
+ PATTERN=$1 
+
+ sudo find /var/log/ -ctime -2 -type f -readable -exec grep --color=auto -ir -e "$1" -- {} \; 
+}
+
+
+
+
 # LESS, CAT, TAIL
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -204,5 +215,19 @@ function fix_js_find_in_files() {
     echo $FILENAME
     printf "\n"
     cat $FILENAME | js-beautify | grep -i "$SEARCH"
+  done
+}
+
+
+function fix_js_in_folder() {
+  #  cat *.js | js-beautify -s 2 --brace-style expand --space-after-anon-function --unescape-strings --good-stuff 
+  SEARCH=$1
+  OUTPATH=./cleaned/
+
+  for FILENAME in ./*.js; do
+    echo $FILENAME
+    printf "\n"
+    printf "----------------"
+    cat $FILENAME | js-beautify -s 2 --brace-style expand --space-after-anon-function --unescape-strings --good-stuff -o $OUTPATH/$FILENAME 
   done
 }

@@ -1,0 +1,81 @@
+# [Created by task 2.5.1 5/21/2018 14:14:05]
+# Taskwarrior program configuration file.
+# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+# Use the command 'task show' to see all defaults and overrides
+
+# Make searches case insensitive, personal preference
+search.case.sensitive=no
+
+# Daily burndown
+alias.burndown=burndown.weekly
+#alias.dailystatus=status:completed end.after:today all
+#alias.punt=modify wait:1d
+#alias.someday=mod +someday wait:someday
+
+# Indicate the active task in reports
+active.indicator=>
+
+# Files
+data.location=~/.task
+
+#undo.style=diff
+#default.command=list
+
+editor=nano
+
+# Sort the columns a little differently
+report.list.columns=start.active,id,project,priority,due,description,entry.age
+report.list.labels= , ,Project,Pri,Due,Description,Age
+
+# By default, the week starts on Sunday, let's fix that.
+weekstart=monday
+
+# TASK SERVER
+#taskd.server=<%= local! :taskd_server %>
+#taskd.key=<%= local!(:taskd_key_file).shell_escape %>
+#taskd.certificate=<%= local!(:taskd_cert_file).shell_escape %>
+#taskd.ca=<%= local!(:taskd_ca_file).shell_escape %>
+#taskd.credentials=<%= local! :taskd_credentials %>
+
+# Color theme (uncomment one to use)
+#include /usr/share/taskwarrior/light-16.theme
+#include /usr/share/taskwarrior/light-256.theme
+#include /usr/share/taskwarrior/dark-16.theme
+include /usr/share/taskwarrior/dark-256.theme
+#include /usr/share/taskwarrior/dark-red-256.theme
+#include /usr/share/taskwarrior/dark-green-256.theme
+#include /usr/share/taskwarrior/dark-blue-256.theme
+#include /usr/share/taskwarrior/dark-violets-256.theme
+#include /usr/share/taskwarrior/dark-yellow-green.theme
+#include /usr/share/taskwarrior/dark-gray-256.theme
+#include /usr/share/taskwarrior/dark-gray-blue-256.theme
+#include /usr/share/taskwarrior/solarized-dark-256.theme
+#include /usr/share/taskwarrior/solarized-light-256.theme
+#include /usr/share/taskwarrior/no-color.theme
+
+# Include the solarized themes, enable solarized dark
+include /usr/share/task/solarized-dark-256.theme  
+#include /usr/share/task/solarized-light-256.theme
+
+color=on
+journal.time=on
+
+# task ready report default with custom columns
+#default.command=ready
+#report.ready.columns=id,start.active,depends.indicator,project,due.relative,description.desc
+#report.ready.labels= ,,Depends, Project, Due, Description
+#if none of the tasks in a report have a particular column, it will not show in the report
+
+uda.reviewed.type=date
+uda.reviewed.label=Reviewed
+report._reviewed.description=Tasksh review report.  Adjust the filter to your needs.
+report._reviewed.columns=uuid
+report._reviewed.sort=reviewed+,modified+
+report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
