@@ -1,0 +1,98 @@
+#!/bin/sh   
+
+# Programmable Completion Builtins
+# =============================================================================
+# https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html#Programmable-Completion-Builtins
+# ----------------------------------------------------------------------------
+# Builtin commands are available to manipulate the programmable completion facilities
+
+# TERMS 
+# =============================================================================
+# progcomp - If set, programmable completion is enabled. Enabled by default.
+# compgen  - Generate possible completion matches 
+# complete - Specify how arguments to each name should be completed.
+# compopt  - Modify completion options for each name according to the options
+# ----------------------------------------------------------------------------
+
+# BASIC COMPLETION SET
+# =============================================================================
+# You don't need to enable this if it's already enabled 
+# in /etc/bash.bashrc OR /etc/profile sources /etc/bash.bashrc
+# ----------------------------------------------------------------------------
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+
+# SNAP APPLICATIONS 
+# =============================================================================
+if [ "${PATH#*/snap/bin}" = "${PATH}" ]; then
+    export PATH=$PATH:/snap/bin
+fi
+
+# ENABLE_DESKTOP=0
+# desktop files (used by desktop environments within both X11 and Wayland) are
+# looked for in XDG_DATA_DIRS; make sure it includes the relevant directory for
+# snappy applications' desktop files.
+# ----------------------------------------------------------------------------
+# if [ "${XDG_DATA_DIRS#*/snapd/desktop}" = "${XDG_DATA_DIRS}" ]; then
+#    export XDG_DATA_DIRS="${XDG_DATA_DIRS:-/usr/local/share:/usr/share}:/var/lib/snapd/d$
+# fi
+# unset ENABLE_DESKTOP
+
+
+# =============================================================================
+# DEVELOPER TOOLS
+# =============================================================================
+# GIT
+# ----------------------------------------------------------------------------
+if [ -f ~/lib/bash/completion/git-completion.bash ]; then
+  . ~/lib/bash/completion/git-completion.bash 
+fi
+
+# NPM
+# ----------------------------------------------------------------------------
+# 1 LOAD FROM NPM 
+#    npm completion >> ~/.bashrc
+# 2 OR pipe the output of npm completion to a file > 
+#    `/usr/local/etc/bash_completion.d/npm` 
+# 3 When `COMP_CWORD`, `COMP_LINE`, and `COMP_POINT` are defined in the environment, 
+#    `npm completion` acts in "plumbing mode", and outputs completions based on the arguments
+# TODO: UPDATER SCRIPT FOR NEW PACKAGE INSTALLS AND UPGRADES
+# ------------------------------------------------------------------------------
+if [ -f ~/lib/bash/completion/npm-completion.bash ]; then
+  . ~/lib/bash/completion/npm-completion.bash 
+fi
+
+
+# =============================================================================
+# SERVER SIDE APPLICATIONS 
+# ARE LESS USEFUL IN THE LOCAL BASH SETUP
+# BECAUSE I WOULD MOST LIKELY BE USING THE FOLLOWING ON A REMOTE SERVER 
+# =============================================================================
+# MAGENTO 2
+# ---
+# . completion/magento2-bash-completion
+
+# WORDPRESS CLI
+# ---
+# . completion/wp-completion.bash
+
+# MYSQL 
+# ---
+# // my.cnf
+# ```
+#   [mysql]
+#   auto-rehash
+# ```
+# OR ADD FLAG AT RUNTIME 
+alias mysql="mysql --auto-rehash"
+
+
+
+
+

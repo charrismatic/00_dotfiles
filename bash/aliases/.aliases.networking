@@ -1,0 +1,20 @@
+# =============================================================================
+# 2. POWERUSER / SYSADMIN FUNCTIONS 
+# =============================================================================
+
+### NETWORKING
+alias myip="dig +short http://myip.opendns.com @http://resolver1.opendns.com"
+alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump='sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\"'
+alias scpresume='rsync --partial --progress --rsh=ssh' # Resume a broken scp transfer
+
+## NETWORKING: SOCKETS
+alias show_sockets_short="ss -4ltdn"
+alias show_sockets_long="sudo ss --processes --numeric --udp --ipv4 --listening --tcp --unix --contexts"
+alias short_socks="show_sockets_short"
+alias long_socks="show_sockets_long"
+alias high_ports="sudo lsof -iTCP -i :8000-10000"
+alias low_ports="sudo lsof -i :22-100"
+
+## NETWORKING: LOGS
+

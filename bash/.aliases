@@ -1,0 +1,26 @@
+# =============================================================================
+#  MATT HARRIS
+#  m@ttHarri.is
+#  11/14/2017, 12:01:19 PM
+# =============================================================================
+
+BASE_PATH=~/lib/bash 
+ALIAS_PATH=$BASE_PATH/aliases
+
+
+. $ALIAS_PATH/.aliases.default
+
+. $ALIAS_PATH/.aliases.networking
+ 
+. $ALIAS_PATH/.aliases.local 
+ 
+. $ALIAS_PATH/.aliases.web_dev
+
+## EXTRAS 
+# . $ALIAS_PATH/.aliases.magento2 
+# . $ALIAS_PATH/.aliases.gitlab
+ 
+. $ALIAS_PATH/.aliases.safeguard 
+
+unset ALIAS_PATH
+unset BASE_PATH

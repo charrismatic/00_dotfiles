@@ -1,0 +1,181 @@
+ # =============================================================================
+# www.ma.ttharr.is
+# m@ttharr.is 
+# june 2018
+# =============================================================================
+# 
+## OVERVIEW 
+# BASH PROFILE RUNTIME COMFIGURATION (.BASHRC)
+# =============================================================================
+
+# IN AN INTERACTIVE SHELL, BASH FIRST LOADS /etc/profile
+# BASH WILL READ FROM FIRST THE OF THESE THAT EXIST AND IS READABLE
+# IN THE FOLLOWING ORDER
+#
+#   ~/.bash_profile
+#   ~/.bash_login 
+#   ~/.profile 
+
+
+# INTERACTIVE SHELLS
+# -----------------------------------------------------------------------------
+# Interactive shell generally reads from and writes to a users terminal
+# TO CHECK IF BASH is running interactively IN A startup script 
+# test the value of the ‘-’ special parameter. It contains 'i' when the shell is interactive
+# Example:
+
+function is_bash_interactive () {
+  case "$-" in
+  *i*)	echo This shell is interactive with values "$-" ;;
+  *)	echo This shell is not interactive ;;
+  esac
+}
+
+# Alternatively, startup scripts may examine the variable PS1; it is unset in non-interactive shells, and set in interactive shells. Thus:
+if [ -z "$PS1" ]; then
+    printf "Welcome $USER \ttoday is $(date --date=today '+%A, %B %d %Y at %r')\n" >> ~/bash.log
+else
+  # PRINT WELCOME SCREEN IF INTERACTIVE, WE CAN ALSO HOOK LOGGING AND ACCOUNTING HERE WHEN NEEDED
+  echo ".-.     .-.     .-.     .-.     .-.     .-.     .-.     .-.     .-.     .-.     "
+  echo "dtodt\dtodtod\odtodto\todtodt\dtodtod\odtodto\todtodt\dtodtod\odtodto\todtodt\  "
+  echo "'     \`-'     \`-'    \`-'    \`-'    \`-'    \`-'   \`-'    \`-'   \`-'    \` "
+  printf "\n\t Welcome, \E[1;49;31m$USER \E[0m \n\t Today is $(date --date=today '+\E[1;49;36m%A, %B %d %Y\E[0m at \E[7;49;93m%r\E[0m')\n\n"
+  
+echo "
+   ,_,
+  (O,O)
+  (   )
+  -"-"---((-
+  "
+fi
+ 
+# INTERACTIVE SHELL - NON-LOGIN
+# -----------------------------------------------------------------------------
+# IN AN INTERACTIVE SHELL that is not a `login shell`
+# Bash reads from /etc/bash.bashrc THEN ~/.bashrc
+
+
+## LOGIN SHELL
+# -----------------------------------------------------------------------------
+# A session where you directly log in to the system and Bash IS THE SHELL
+# like remote ssh session or logging in through a non-graphical text terminal.
+
+
+## NON-LOGIN SHELL
+# -----------------------------------------------------------------------------
+# A non-login shell is then the type of shells you open after logging in:
+# a graphical session when you open a new terminal window, OR SPAWNED BY A SCRIPTED FUNCTION 
+
+
+# SCOPE 
+# =============================================================================
+
+# .profile 
+# -----------------------------------------------------------------------------
+# For things not specifically related to Bash 
+# EXAMPLE: environment variables, PATH, should be available anytime. 
+# .profile should also be loaded when starting a graphical desktop session
+ 
+ 
+# .bashrc 
+# -----------------------------------------------------------------------------
+# configuring the interactive Bash usage, 
+# aliases, editor settings, prompt, etc
+ 
+# .bash_profile 
+# -----------------------------------------------------------------------------
+# is for making sure that both the things in .profile and .bashrc
+# are loaded for login shells.
+# For example, .bash_profile could be something simple like
+#
+# . ~/.profile
+# . ~/.bashrc
+#
+ 
+ 
+ 
+# References:
+# http://stefaanlippens.net/bashrc_and_others/ 
+# https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents
+
+
+# -----------------------------------------------------------------------------
+# * IMPORT ORDER SHOULD NOT MATTER IF IVE DONE EVERYTHING CORRECTLY
+# * ALL ATTEMPTS WERE MADE TO REMOVE DEPENDENCY ACROSS FILES AND CHAINING EFFECTS 
+# * HOWEVER CHANGES MIGHT HAVE UNINTENDED CONSEQUENCES 
+#   
+#  TODO: "BASH-ADD" FUNCTION TO APPEND NEW ALIASES FROM COMMAND LINE
+
+# ~/.bashrc is executed by bash for non-login shells
+# ~/.bash_profile is used 
+# IF NOT RUNNING INTERACTIVELY EXIT
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+
+# ============================================================================= 
+## EARLY CONFIG 
+# =============================================================================
+
+# SHOPT INPUT CONFIG SETTINGS
+if [ -f ~/lib/bash/.input ]; then
+  . ~/lib/bash/.input
+fi
+
+# BASH HISTORY SETTINGS
+# -----------------------------------------------------------------------------
+if [ -f ~/lib/bash/.history ]; then
+  . ~/lib/bash/.history
+fi
+
+# FUNCTION DEFINITIONS 
+# -----------------------------------------------------------------------------
+if [ -f ~/lib/bash/.functions ]; then
+  . ~/lib/bash/.functions
+fi
+
+
+# ============================================================================= 
+## APPLICATION SPECIFIC CONFIG
+# ============================================================================= 
+
+# PACKAGE INCLUDE FILE
+# -----------------------------------------------------------------------------
+if [ -f ~/lib/bash/.includes ]; then
+  . ~/lib/bash/.includes
+fi
+
+## COMPLETION LIBRARIES
+# -----------------------------------------------------------------------------
+if [ -f ~/lib/bash/history ]; then
+  . ~/lib/bash/.completion
+fi
+
+
+# ============================================================================= 
+## USER RUNTIME CONFIG
+# ============================================================================= 
+# THESE ARE LAST TO BE LOADED
+# TO MAKE SURE THEY ARENT OVERWRITTEN BY THIRD PARTY LIBRARIES
+# -----------------------------------------------------------------------------
+
+# BASH PATH INFORMATION
+# -----------------------------------------------------------------------------
+if [ -f ~/lib/bash/.path ]; then
+  . ~/lib/bash/.path
+fi
+
+# PROMPT PS1 CUSTOMIZATIONS
+# -----------------------------------------------------------------------------
+if [ -f ~/lib/bash/.prompt ]; then
+  . ~/lib/bash/.prompt
+fi
+
+# ALIASES 
+# -----------------------------------------------------------------------------
+if [ -f ~/lib/bash/.aliases ]; then
+  . ~/lib/bash/.aliases
+fi
+

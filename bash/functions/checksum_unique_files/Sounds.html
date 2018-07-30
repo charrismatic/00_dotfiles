@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)http://eanplatter.github.io/sounder/ -->
+<html ng-app="sounds" class="ng-scope"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+  <title>Sounds</title>
+  <link rel="stylesheet" type="text/css" href="./Sounds_files/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./Sounds_files/bootstrap.min(1).css">
+  <link rel="stylesheet" type="text/css" href="./Sounds_files/style.css">
+</head>
+<body ng-controller="MainController" class="ng-scope">
+<form class="ng-pristine ng-valid">
+<input type="text" placeholder="find artist via SoundCloud username" ng-model="searchArtist" class="form-control text-center ng-pristine ng-valid ng-touched">
+<button type="submit" class="btn btn-block btn-info" ng-click="getArtist()">Search</button>
+
+</form>
+
+<div ng-bind-html="iFrame" class="ng-binding"></div>
+<div class="row">
+  <!-- ngRepeat: song in artist -->
+</div>
+<script src="./Sounds_files/angular.min.js"></script>
+<script src="./Sounds_files/sdk.js"></script>
+<script src="./Sounds_files/app.js"></script>
+<script src="./Sounds_files/controller.js"></script>
+<script src="./Sounds_files/service.js"></script>
+
+
+
+</body></html>

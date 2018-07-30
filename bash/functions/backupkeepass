@@ -1,0 +1,5 @@
+#!/bin/bash
+
+## COURTESY OF JEREMY JENKINS 2017 - SFP
+DATE=$(date +"%Y%m%d%H%M")
+/bin/cp /mnt/fs01/public/SFP.kdbx /home/jeremy/Projects/SFP/SFP_$DATE.kdbx

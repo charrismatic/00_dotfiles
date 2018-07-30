@@ -1,0 +1,32 @@
+###  DEFAULT LOG DIRECTORIES =
+# gitaly            = /var/log/gitlab/gitaly
+# gitlab_monitor    = /var/log/gitlab/gitlab-monitor
+# gitlab_pages      = /var/log/gitlab/gitlab-pages
+# gitlab_rails      = /var/log/gitlab/gitlab-rails
+# gitlab_shell      = /var/log/gitlab/gitlab-shell
+# gitlab_workhorse  = /var/log/gitlab/gitlab-workhorse
+# mattermost        = /var/log/gitlab/mattermost
+# nginx             = /var/log/gitlab/nginx
+# node_exporter     = /var/log/gitlab/node-exporter
+# pgbouncer         = /var/log/gitlab/pgbouncer
+# postgres_exporter = /var/log/gitlab/postgres-exporter
+# postgresql        = /var/log/gitlab/postgresql
+# prometheus        = /var/log/gitlab/prometheus
+# redis_exporter    = /var/log/gitlab/redis-exporter
+# registry          = /var/log/gitlab/registry
+# sidekiq_cluster   = /var/log/gitlab/sidekiq-cluster
+# sidekiq           = /var/log/gitlab/sidekiq
+# unicorn           = /var/log/gitlab/unicorn
+
+alias gl="gitlab-ctl"
+alias gl_show="gitlab-ctl show-config"
+alias gl_edit="nano /etc/gitlab/gitlab.rb"
+alias gl_status"=gitlab-ctl status"
+alias gl_check="gitlab-ctl check-config"
+alias gl_backup="cp /etc/gitlab/gitlab.rb ~/Gitlab_Ops/gitlab.rb.bak"
+alias gl_update="gitlab-ctl reconfigure"
+alias gl_show_ports="grep -v \# /etc/gitlab/gitlab.rb | grep port"
+alias gl_show_urls="grep -v \# /etc/gitlab/gitlab.rb | grep http"
+alias gl_show_paths="grep -v \# /etc/gitlab/gitlab.rb | grep /"
+
+

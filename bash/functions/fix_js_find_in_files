@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+# TO IMPROVE UPON THIS BEHAVIOR 
+## #find . -maxdepth 1 -name "*.js" -printf "%p\n" -exec cat {} \; | js-beautify | grep -i $string
+
+function fix_js_find_in_files() {
+  SEARCH=$1
+
+  for FILENAME in ./*.js; do
+    echo $FILENAME
+    printf "\n"
+    cat $FILENAME | js-beautify | grep -i "$SEARCH"
+  done
+}
+
+fix_js_find_in_files $1

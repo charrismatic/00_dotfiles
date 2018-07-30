@@ -1,0 +1,31 @@
+## ================================================
+## DEFAULT
+## ================================================
+include "/usr/share/nano/xml.nanorc"         ## XML-type files
+include "/usr/share/nano/nanorc.nanorc"      ## Nanorc files
+include "/usr/share/nano/c.nanorc"           ## C/C++ 
+include "/usr/share/nano/makefile.nanorc"    ## Makefiles
+include "/usr/share/nano/css.nanorc"         ## Cascading Style Sheets 
+include "/usr/share/nano/debian.nanorc"      ## Debian files
+include "/usr/share/nano/html.nanorc"        ## HTML
+include "/usr/share/nano/php.nanorc"         ## PHP
+include "/usr/share/nano/tcl.nanorc"         ## TCL
+include "/usr/share/nano/tex.nanorc"      ## TeX
+include "/usr/share/nano/mutt.nanorc"     ## Quoted emails (under e.g. mutt)
+include "/usr/share/nano/patch.nanorc"    ## Patch files
+include "/usr/share/nano/man.nanorc"      ## Manpages
+include "/usr/share/nano/perl.nanorc"     ## Perl
+include "/usr/share/nano/python.nanorc"   ## Python
+include "/usr/share/nano/ruby.nanorc"     ## Ruby
+include "/usr/share/nano/java.nanorc"     ## Java
+include "/usr/share/nano/sh.nanorc"       ## Bourne shell scripts
+include "/usr/share/nano/groff.nanorc"    ## Groff
+include "/usr/share/nano/gentoo.nanorc"   ## Gentoo files
+include "/usr/share/nano/fortran.nanorc"  ## Fortran
+include "/usr/share/nano/objc.nanorc"     ## Objective-C
+include "/usr/share/nano/ocaml.nanorc"    ## OCaml
+include "/usr/share/nano/awk.nanorc"      ## AWK
+include "/usr/share/nano/asm.nanorc"      ## Assembler
+include "/usr/share/nano/pov.nanorc"      ## POV-Ray
+include "/usr/share/nano/xml.nanorc"      # XML-type files# 
+
