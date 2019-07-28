@@ -1,0 +1,19 @@
+{
+    "env": { 
+      "browser": true
+    },
+    "globals": {
+        "window": "writable",
+        "document": "writable"
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "script",
+        "ecmaFeatures": {
+
+        }
+    },
+    "rules": {
+        "semi": "error"
+    }
+}
