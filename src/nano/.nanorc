@@ -1,0 +1,313 @@
+# https://freethegnu.wordpress.com/2007/06/23/nano-shortcuts-syntax-highlight-and-nanorc-config-file-pt2/ 
+## ~/.nanorc
+## Please note that you must have configured nano with --enable-nanorc
+# To make sure a value is disabled, use "unset <option>".
+## Quotes inside string parameters don't have to be escaped with backslashes.
+## The last double quote in the string will be treated as its end.
+## For example, for the "brackets" option, ""')>]}" will match ", ', ), >, ], and }.
+# -----------------------------------------------------------------------------
+
+unset autoindent          ## Use auto-indentation
+# auto indent: (Meta-I) to toggle
+## the next line starts after the same number of spaces /tabs as the previous line.
+## OFF BECAUSE Nano doesn’t know how to properly indent code lines.
+
+# set backup              ## Backup files to filename~
+# set backupdir ""        ## The directory to put unique backup files in.
+# set backwards           ## Do backwards searches by default.
+# set historylog          ## Enable ~/.nano_history for saving and reading search/replace strings. 
+
+## Use bold text instead of reverse video text
+set boldtext
+
+## The characters treated as closing brackets when justifying paragraphs.
+## They cannot contain blank characters.
+## Only closing punctuation, optionally followed by closing brackets, can end sentences.
+## To be able to justify paragraphs after one of those characters
+## Use ctrl+j to justify the paragraph,
+## meta+j to justify all the file, and
+## ctrl+u to undo the justification
+set brackets ""')>]}"'
+
+
+## The opening and closing brackets that can be found by bracket ## searches. 
+## They cannot contain blank characters.  
+## The former set must come before the latter set, and both must be in the same order.
+## Use meta+altgr+9 `meta + ]`  to switch between the matching brackets
+set matchbrackets "(<[{)>]}"
+
+
+
+# set casesensitive       ## Do case sensitive searches by default.
+
+## Constantly display the cursor position in the statusbar.  
+## Note that this overrides "quickblank"
+set const 
+
+## Use cut to end of line by default.
+set cut
+
+## Set the line length for wrapping text and justifying paragraphs.
+## If fill is 0 or less, the line length will be the screen width less
+## this number.
+set fill -8
+
+## Remove empty first line (Meta-O) to toggle
+## Use the blank line below the titlebar as extra editing space.
+set morespace
+
+## Enable mouse support
+unset mouse
+
+## Allow multiple file buffers (inserting a file will put it into a separate buffer).  
+## You must have configured with `--enable-multibuffer`  for this to work.
+## Allow multibuffer `Meta-F`
+## If not active, `crtl+r` (read file) adds the file into the same buffer. 
+## WHEN ENABLED, it opens a new buffer! 
+## You can cicle through the buffers with Meta+< and Meta+>
+set multibuffer
+
+# set noconvert     ## Don't convert files from DOS/Mac format.
+# set nofollow      ## Don't follow symlinks when writing files.
+# set nohelp        ## Don't display the helpful shortcut lists at the bottom of the screen.
+# set nonewlines    ## Don't add newlines to the ends of files.
+
+## Don't wrap text at all.
+set nowrap
+
+## Set operating directory.  nano will not read or write files outside
+## this directory and its subdirectories.  Also, the current directory
+## is changed to here, so any files are inserted from this dir.  A blank
+## string means the operating directory feature is turned off.
+# set operatingdir ""
+
+## Preserve the XON and XOFF keys (^Q and ^S).
+# set preserve
+
+## The characters treated as closing punctuation when justifying
+## paragraphs.  They cannot contain blank characters.  Only closing
+## punctuation, optionally followed by closing brackets, can end sentences
+# set punct "!.?"
+
+## Do quick statusbar blanking.  Statusbar messages will disappear after
+## 1 keystroke instead of 26.  Note that "const" overrides this.
+# set quickblank
+
+## The email-quote string, used to justify email-quoted paragraphs.
+## This is an extended regular expression if your system supports them,
+## otherwise a literal string.  Default:
+# set quotestr "^([ 	]*[#:>\|}])+"
+
+## if you have extended regular expression support, otherwise:
+# set quotestr "> "
+# set rebinddelete   ## Fix Backspace/Delete confusion problem.
+# set rebindkeypad   ## Fix numeric keypad key confusion problem.
+
+## Do extended regular expression searches by default.
+set regexp
+
+## Make the Home key smarter.  When Home is pressed anywhere but at the
+## very beginning of non-whitespace characters on a line, the cursor
+## will jump to that beginning (either forwards or backwards).  If the
+## cursor is already at that position, it will jump to the true beginning of the line.
+set smarthome
+
+## Use smooth scrolling as the default.
+set smooth
+
+## Enable soft line wrapping (AKA full line display).
+set softwrap
+
+## Use this spelling checker instead of the internal one.  This option
+## does not properly have a default value.
+set speller "hunspell"
+
+## Allow nano to be suspended.
+set suspend
+
+## Use this tab size instead of the default; it must be greater than 0.
+set tabsize 2
+
+## Convert typed tabs to spaces.
+set tabstospaces
+
+## Hide the help shortcuts at the bottom `Meta-X`
+set nohelp
+## Don’t display the help lists at the bottom of the screen
+
+# set tempfile     ## Save automatically on exit, don't prompt.
+# set undo         ## Enable the new (EXPERIMENTAL) generic undo code, not just for line cuts.
+# set view         ## Disallow file modification.  Why would you want this in an rcfile? ;)
+
+## The two single-column characters used to display the first characters
+## of tabs and spaces.  187 in ISO 8859-1 (0000BB in Unicode) and 183 in
+## ISO-8859-1 (0000B7 in Unicode) seem to be good values for these.
+set whitespace "  "
+
+## Detect word boundaries more accurately by treating punctuation
+## characters as parts of words.
+# set wordbounds
+
+# ============================================================================
+##  Color setup
+# ============================================================================
+## syntax description [filename regex ...]
+##
+## The "none" syntax is reserved;
+## specifying it on the command line is the same as not having a syntax at all.
+## The "default" syntax is special: it takes no filename regexes,
+## and applies to files that don't match any other syntax's filename regexes.
+##
+##    color foreground,background "regex" ["regex"...]
+##    icolor foreground,background "regex" ["regex"...]
+##
+## - color    matches case sesitinve
+## - icolor   matches case insensitive
+##
+## Valid colors:
+##     white   magenta   blue    cyan
+##     green   yellow    black   red
+##
+## Foreground colors may add the prefix bright
+##
+## To use multi-line regexes, use the start="regex" end="regex"
+## [start="regex" end="regex"...] format.
+##
+## If your system supports transparency, not specifying a background
+## color will use a transparent color.  If you don't want this, be sure
+## to set the background color to black or white.
+##
+## If you wish, you may put your syntaxes in separate files.  You can
+## make use of such files (which can only include "syntax", "color", and
+## "icolor" commands) as follows:
+##
+## include "/path/to/syntax_file.nanorc"
+##
+## Unless otherwise noted, the name of the syntax file (without the
+## ".nanorc" extension) should be the same as the "short description"
+## name inside that file.  These names are kept fairly short to make
+## them easier to remember and faster to type using nano's -Y option.
+##
+## All regexes should be extended regular expressions.
+## Key bindings
+## Please see nanorc(5) for more details on this
+##
+## Here are some samples to get you going
+# bind M-W nowrap main
+# bind M-A casesens search
+# bind ^S research main
+
+## Set this if your backspace key sends delete most of the time (2.1.3+)
+# bind kdel backspace all
+
+
+# SYNTAX HIGHLIGHTED SET
+## =============================================================================
+
+
+## SYSTEM DEFAULT                                      (49K)
+## /usr/share/nano/
+## --------------------------------------------------------
+# XML-type files          # Perl                   
+# Nanorc files            # Python                 
+# C/C++                   # Ruby                   
+# Makefiles               # Java                   
+# Cascading Style Sheets  # Bourne shell scripts   
+# Debian files            # Groff                  
+# HTML                    # Gentoo files           
+# PHP                     # Fortran                
+# TCL                     # Objective-C            
+# TeX                     # OCaml                  
+# Quoted emails           # AWK                    
+# Patch files             # Assembler              
+# Manpages                # POV-Ray                
+# XML-type files#
+# ---------------------------------------------------------
+# include "~/lib/nano/syntax/system_default.all.nanorc"
+
+## SCOPATZ                                            (114K)
+## https://github.com/scopatz/nanorc
+## --------------------------------------------------------
+# Dockerfile.nanorc         #  haskell.nanorc             # pkg-config.nanorc
+# Readme.rst                #  html.j2.nanorc             # po.nanorc         
+# apacheconf.nanorc         #  html.nanorc                # pov.nanorc        
+# arduino.nanorc            #  i3.nanorc                  # privoxy.nanorc    
+# asciidoc.nanorc           #  ical.nanorc                # puppet.nanorc     
+# asm.nanorc                #  ini.nanorc                 # python.nanorc     
+# awk.nanorc                #  inputrc.nanorc             # reST.nanorc       
+# c.nanorc                  #  install.sh*                # rpmspec.nanorc    
+# clojure.nanorc            #  java.nanorc                # ruby.nanorc       
+# cmake.nanorc              #  javascript.nanorc          # rust.nanorc       
+# coffeescript.nanorc       #  js.nanorc                  # scala.nanorc      
+# colortest.nanorc          #  json.nanorc                # sed.nanorc        
+# conf.nanorc               #  keymap.nanorc              # sh.nanorc         
+# conky.nanorc              #  kickstart.nanorc           # sls.nanorc        
+# csh.nanorc                #  ledger.nanorc              # sql.nanorc        
+# csharp.nanorc             #  lisp.nanorc                # svn.nanorc        
+# css.nanorc                #  lua.nanorc                 # swift.nanorc      
+# cython.nanorc             #  makefile.nanorc            # systemd.nanorc    
+# dot.nanorc                #  man.nanorc                 # tcl.nanorc        
+# dotenv.nanorc             #  markdown.nanorc            # tex.nanorc        
+# email.nanorc              #  mpdconf.nanorc             # vala.nanorc       
+# erb.nanorc                #  mutt.nanorc                # verilog.nanorc    
+# fish.nanorc               #  nanorc.nanorc              # vi.nanorc         
+# fortran.nanorc            #  nginx.nanorc               # xml.nanorc        
+# genie.nanorc              #  ocaml.nanorc               # xresources.nanorc 
+# gentoo.nanorc             #  patch.nanorc               # yaml.nanorc       
+# git.nanorc                #  peg.nanorc                 # yum.nanorc        
+# gitcommit.nanorc          #  perl.nanorc                # zsh.nanorc        
+# glsl.nanorc               #  perl6.nanorc               # zshrc.nanorc      
+# go.nanorc                 #  php.nanorc
+# groff.nanorc              #  pkgbuild.nanorc
+# haml.nanorc
+# ---------------------------------------------------------
+# include "~/lib/nano/syntax/scopaty_nanorc.all.nanorc"
+
+## NANORC2                                            (52K)
+## https://github.com/nanorc/nanorc
+## --------------------------------------------------------
+# awk.nanorc           # inputrc.nanorc     # peg.nanorc         # vi.nanorc            
+# c.nanorc             # java.nanorc        # php.nanorc         # xml.nanorc           
+# cmake.nanorc         # javascript.nanorc  # pkgbuild.nanorc    # xresources.nanorc    
+# coffeescript.nanorc  # json.nanorc        # pkg-config.nanorc  # yaml.nanorc          
+# colortest.nanorc     # keymap.nanorc      # po.nanorc          # yum.nanorc           
+# csharp.nanorc        # kickstart.nanorc   # privoxy.nanorc                            
+# css.nanorc           # ledger.nanorc      # properties.nanorc                         
+# cython.nanorc        # lisp.nanorc        # python.nanorc                             
+# default.nanorc       # lua.nanorc         # rpmspec.nanorc                            
+# dot.nanorc           # makefile.nanorc    # ruby.nanorc                               
+# email.nanorc         # man.nanorc         # sed.nanorc                                
+# git.nanorc           # markdown.nanorc    # shell.nanorc                              
+# glsl.nanorc          # mpdconf.nanorc     # sql.nanorc                                
+# go.nanorc            # nanorc.nanorc      # systemd.nanorc                            
+# html.nanorc          # nginx.nanorc       # tex.nanorc                                
+# ini.nanorc           # patch.nanorc       # vala.nanorc                                
+# ---------------------------------------------------------
+# include "~/lib/nano/syntax/nanorc_nanorc.all.nanorc"
+
+
+# NANO SYNTAX
+# Files from nanosyntax (New BSD license)
+# code.google.com/archive/p/nanosyntax/
+## --------------------------------------------------------
+# apache2.nanorc      # css.nanorc         # httpstatuscodes.nanorc  # nscd.nanorc          # rcfiles-new.nanorc
+# apacheconf.nanorc   # debian.nanorc      # info.nanorc             # others.nanorc        # rsync.nanorc
+# aptsrclist.nanorc   # default.nanorc     # ini.nanorc              # paludis.nanorc       # ruby.nanorc
+# asm.nanorc          # delphi.nanorc      # initng.nanorc           # passwd.nanorc        # shlike.nanorc
+# bash.nanorc         # desc.nanorc        # initscript.nanorc       # patch.nanorc         # sh.nanorc
+# c-file.nanorc       # dotemacs.nanorc    # java.nanorc             # perl.nanorc          # softcam.nanorc
+# changelog.nanorc    # dummy.nanorc       # js.nanorc               # php2.nanorc          # sources_list.nanorc
+# changelogs.nanorc   # ebuild.nanorc      # log-stuff.nanorc        # php.nanorc           # tab.nanorc
+# clike.nanorc        # ekghistory.nanorc  # maincf.nanorc           # plaudis.nanorc       # tcl.nanorc
+# c.nanorc            # etcportage.nanorc  # makefile.nanorc         # po.nanorc            # tex.nanorc
+# config2.nanorc      # etc-stuff.nanorc   # man.nanorc              # postgresql.nanorc    # urls.nanorc
+# config3.nanorc      # etcxml.nanorc      # mcchangelog.nanorc      # pov.nanorc           # vhost.nanorc
+# configfiles.nanorc  # gentoo.nanorc      # mimetype.nanorc         # privoxy.nanorc       # xdefaults.nanorc
+# config.nanorc       # groff.nanorc       # mutt.nanorc             # profile.nanorc       # xml.nanorc
+# conf.nanorc         # havp.nanorc        # named.nanorc            # python.nanorc        # xorg.nanorc
+# conky.nanorc        # html.nanorc        # nanorc.nanorc
+# ---------------------------------------------------------
+## SERIALHEX (COLLECTION OF ALL THE ABOVE)            (92K)
+## https://github.com/serialhex/nano-highlight
+## --------------------------------------------------------
+include "~/lib/nano/syntax/serialhex.all.nanorc"
