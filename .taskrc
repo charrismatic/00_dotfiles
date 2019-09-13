@@ -1,0 +1,101 @@
+# [Created by task 2.5.1 5/21/2018 14:14:05]
+# http://taskwarrior.org
+# reference: 'man task' 'man task-color', 'man task-sync' 'man taskrc'
+#
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+## FILTERS
+## -------------
+# project:<project-name>
+# priority:H|M|L or priority:
+# due:<due-date>
+# recur:<frequency>
+# scheduled:<ready-date>
+# until:<expiration date of task>
+# limit:<number-of-rows>
+# wait:<wait-date>
+# depends:<id1,id2 ...>
+# entry:<entry-date>
+
+# Use the command 'task show' to see all defaults and overrides
+abbreviation.minimum=1
+active.indicator=>
+alias.burndown=burndown.weekly
+alias.dailystatus=status:completed end.after:today all
+alias.punt=modify wait:1d
+alias.someday=mod +someday wait:someday
+color=on
+#dateformat=Y-M-D
+#dateformat.report=
+#dateformat.holiday=YMD
+#dateformat.edit=Y-M-D H:N:S
+#dateformat.info=Y-M-D H:N:S
+#dateformat.annotation=
+#date.iso=yes
+#report.X.dateformat=Y-M-D
+default.project=dev
+#default.due=
+#debug=off
+#debug.hooks=0
+#debug.parser=0
+#debug.tls=0
+#obfuscate=1
+list.all.projects=yes
+list.all.tags=yes
+journal.time=on
+default.command=ready
+#default.command=list
+data.location=/data/0/lib/task/
+editor=nano
+search.case.sensitive=no
+#undo.style=diff
+weekstart=monday
+verbose=yes
+# TASK SERVER
+# -----------------------------------------------------------------------------
+#taskd.server=<%= local! :taskd_server %>
+#taskd.key=<%= local!(:taskd_key_file).shell_escape %>
+#taskd.certificate=<%= local!(:taskd_cert_file).shell_escape %>
+#taskd.ca=<%= local!(:taskd_ca_file).shell_escape %>
+#taskd.credentials=<%= local! :taskd_credentials %>
+
+
+## Color theme (uncomment one to use)
+# -----------------------------------------------------------------------------
+#include /usr/share/taskwarrior/light-16.theme
+#include /usr/share/taskwarrior/light-256.theme
+#include /usr/share/taskwarrior/dark-16.theme
+include /usr/share/taskwarrior/dark-256.theme
+#include /usr/share/taskwarrior/dark-red-256.theme
+#include /usr/share/taskwarrior/dark-green-256.theme
+#include /usr/share/taskwarrior/dark-blue-256.theme
+#include /usr/share/taskwarrior/dark-violets-256.theme
+#include /usr/share/taskwarrior/dark-yellow-green.theme
+#include /usr/share/taskwarrior/dark-gray-256.theme
+#include /usr/share/taskwarrior/dark-gray-blue-256.theme
+#include /usr/share/taskwarrior/solarized-dark-256.theme
+#include /usr/share/taskwarrior/solarized-light-256.theme
+#include /usr/share/taskwarrior/no-color.theme
+include /usr/share/task/solarized-dark-256.theme
+#include /usr/share/task/solarized-light-256.theme
+
+uda.reviewed.type=date
+uda.reviewed.label=Reviewed
+uda.totalactivetime.type=duration
+uda.totalactivetime.label=Total active time
+uda.totalactivetime.values=''
+
+#report.list.columns=start.active,id,project,priority,due,description,totalactivetime,entry.age
+#report.list.labels=id,start.age,entry.age,totalactivetime,...,urgency
+report.list.labels=id,spent,started,created,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due,until.remaining,description.count,urgency
+report.list.columns=id,totalactivetime,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due,until.remaining,description.count,urgency
+report.ready.labels= , ,Depends,Project,Due,Time Spent,Description
+report.ready.columns=id,start.active,depends.indicator,project,due.relative,totalactivetime,description.desc
+
+report._reviewed.description=Tasksh review report.  Adjust the filter to your needs.
+report._reviewed.columns=uuid
+report._reviewed.sort=reviewed+,modified+
+report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )

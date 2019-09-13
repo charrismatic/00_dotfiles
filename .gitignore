@@ -1,2 +1,6 @@
+.cache/
+.git
+node_modules
+node_modules/
+.cache/
 
-bash/functions/checksum_unique_files/resources/

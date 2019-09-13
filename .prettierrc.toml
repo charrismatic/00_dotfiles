@@ -1,0 +1,42 @@
+# .prettierrc.toml
+# filepath = "<string>"
+arrowParens  = 'always'
+bracketSpacing = true
+endOfLine = 'lf'
+htmlWhitespaceSensitivity = 'strict'
+jsxBracketSameLine = false
+jsxSingleQuote = true
+printWidth = 100
+proseWrap = 'always'
+semi = false
+singleQuote = true
+tabWidth = 2
+trailingComma = "es5"
+useTabs = false
+
+
+# bracesSpacing = true
+# quoteProps = 'consistent'
+# alignObjectProperties = true
+# spaceBeforeFunctionParen = true
+#  ====================
+#  CLI EQUIVALENT FLAGS
+#  ====================
+# --no-bracket-spacing
+# --end-of-line lf
+# --no-space-empty-fn
+# --space-before-function-paren
+# --prose-wrap
+# --quote-props consistent
+# --no-semi
+# --single-quote
+# --jsx-single-quote
+# --trailing-comma none
+# --no-bracket-spacing
+# --arrow-parens always
+# --prose-wrap
+# --html-whitespace-sensitivity strict
+# --print-width 100
+# --stdin-filepath <string>
+# --parser <string>
+# --require-pragma

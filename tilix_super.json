@@ -1,0 +1,92 @@
+{
+    "child": {
+        "child1": {
+            "directory": "\/home\/icarus",
+            "height": 1037,
+            "profile": "d3ac8fd2-dd66-4c37-96d6-cc6be868d7a9",
+            "readOnly": false,
+            "synchronizedInput": true,
+            "type": "Terminal",
+            "width": 636
+        },
+        "child2": {
+            "child1": {
+                "child1": {
+                    "directory": "\/data\/projects\/Chrome_Extensions\/chrome-dark-mode",
+                    "height": 605,
+                    "profile": "d3ac8fd2-dd66-4c37-96d6-cc6be868d7a9",
+                    "readOnly": false,
+                    "synchronizedInput": true,
+                    "type": "Terminal",
+                    "width": 779
+                },
+                "child2": {
+                    "directory": "\/data\/projects\/Chrome_Extensions\/chrome-document-tools",
+                    "height": 431,
+                    "profile": "d3ac8fd2-dd66-4c37-96d6-cc6be868d7a9",
+                    "readOnly": false,
+                    "synchronizedInput": true,
+                    "type": "Terminal",
+                    "width": 779
+                },
+                "orientation": 1,
+                "position": 58,
+                "ratio": 0.583413693346190976,
+                "type": "Paned"
+            },
+            "child2": {
+                "child1": {
+                    "child1": {
+                        "directory": "\/home\/icarus",
+                        "height": 317,
+                        "profile": "9ed74aca-42d7-4b25-9b1b-28049a0a4de2",
+                        "readOnly": false,
+                        "synchronizedInput": true,
+                        "type": "Terminal",
+                        "width": 503
+                    },
+                    "child2": {
+                        "directory": "\/glacier\/library\/extensions\/ResourcesSaverExt",
+                        "height": 318,
+                        "profile": "9ed74aca-42d7-4b25-9b1b-28049a0a4de2",
+                        "readOnly": false,
+                        "synchronizedInput": true,
+                        "type": "Terminal",
+                        "width": 503
+                    },
+                    "orientation": 1,
+                    "position": 30,
+                    "ratio": 0.498427672955974843,
+                    "type": "Paned"
+                },
+                "child2": {
+                    "directory": "\/home\/icarus\/temp\/stream",
+                    "height": 400,
+                    "profile": "d3ac8fd2-dd66-4c37-96d6-cc6be868d7a9",
+                    "readOnly": false,
+                    "synchronizedInput": true,
+                    "type": "Terminal",
+                    "width": 503
+                },
+                "orientation": 1,
+                "position": 61,
+                "ratio": 0.613307618129218857,
+                "type": "Paned"
+            },
+            "orientation": 0,
+            "position": 40,
+            "ratio": 0.60717069368667187,
+            "type": "Paned"
+        },
+        "orientation": 0,
+        "position": 33,
+        "ratio": 0.331249999999999989,
+        "type": "Paned"
+    },
+    "height": 1037,
+    "name": "${directory}:${hostname}",
+    "synchronizedInput": false,
+    "type": "Session",
+    "version": "1.0",
+    "width": 1920
+}
