@@ -1,0 +1,12 @@
+{
+  "watch": [
+    "api",
+    "config",
+    "tasks"
+  ],
+  "runOnChangeOnly": false,
+  "ext": "js,json",
+  "delay": "1500",
+  "ignore": ["static"],
+  "exec": "NODE_ENV=development node app.js"
+}
